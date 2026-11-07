@@ -1,0 +1,191 @@
+<!-- HALAMAN INFORMASI STOK/KATALOG -->
+
+<div class="page-heading">
+    <h4>Informasi Stok/Katalog</h4>
+    <p>Kelola informasi buku dan ketersediaan stok pada Bookstore.</p>
+</div>
+
+<!-- RINGKASAN STOK -->
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-info">
+                <span>Total Jenis Buku</span>
+                <h3 id="totalJenisBuku">0</h3>
+            </div>
+            <div class="stat-icon green">
+                <i class="bi bi-book"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-info">
+                <span>Total Seluruh Stok</span>
+                <h3 id="totalStokBuku">0</h3>
+            </div>
+            <div class="stat-icon yellow">
+                <i class="bi bi-box-seam"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-info">
+                <span>Stok Menipis</span>
+                <h3 id="stokMenipis">0</h3>
+            </div>
+            <div class="stat-icon red">
+                <i class="bi bi-exclamation-triangle"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- DAFTAR KATALOG -->
+<div class="content-card">
+
+    <div class="content-card-header">
+        <div>
+            <h6>
+                <i class="bi bi-journal-bookmark me-2 text-success"></i>
+                Daftar Katalog Buku
+            </h6>
+        </div>
+
+        <button type="button" class="btn btn-success btn-sm" id="btnTambahBuku">
+            <i class="bi bi-plus-lg me-1"></i>
+            Tambah Buku
+        </button>
+    </div>
+
+    <div class="content-card-body">
+
+        <!-- SEARCH -->
+        <div class="row mb-3">
+            <div class="col-md-5">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control" id="searchBuku" placeholder="Cari kode atau judul buku...">
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-responsive">
+            <table class="table table-dashboard table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th width="55">No.</th>
+                        <th width="75">Cover</th>
+                        <th>Kode Buku</th>
+                        <th>Judul Buku</th>
+                        <th>Kategori</th>
+                        <th>Edisi</th>
+                        <th>Stok</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelKatalogBuku">
+                    <!-- Data buku ditampilkan melalui JavaScript -->
+                </tbody>
+
+            </table>
+        </div>
+
+        <div id="jumlahDataBuku" class="text-muted small mt-3">
+            Menampilkan 0 data buku.
+        </div>
+
+    </div>
+</div>
+
+<!-- MODAL TAMBAH BUKU -->
+<div class="modal fade" id="modalTambahBuku" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title fs-6 fw-semibold">
+                    <i class="bi bi-plus-circle text-success me-2"></i>
+                    Tambah Data Buku
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form id="formTambahBuku">
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Kode Buku</label>
+                        <input type="text" class="form-control" id="kodeBuku" placeholder="Contoh: EKMA4001" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Judul Buku</label>
+                        <input type="text" class="form-control" id="judulBuku" placeholder="Masukkan judul buku"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Kategori</label>
+                        <select class="form-select" id="kategoriBuku" required>
+                            <option value="">-- Pilih Kategori --</option>
+                            <option value="Buku Ajar">Buku Ajar</option>
+                            <option value="Buku Referensi">Buku Referensi</option>
+                            <option value="Buku Umum">Buku Umum</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Edisi</label>
+                        <input type="text" class="form-control" id="edisiBuku" placeholder="Contoh: 1" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Jumlah Stok</label>
+                        <input type="number" class="form-control" id="jumlahStok" placeholder="Masukkan jumlah stok"
+                            min="0" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Harga Buku</label>
+                        <input type="number" class="form-control" id="hargaBuku" placeholder="Contoh: 180000" min="0"
+                            required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Nama File Cover</label>
+                        <input type="text" class="form-control" id="coverBuku" placeholder="Contoh: buku_baru.jpg">
+                        <small class="text-muted">
+                            Isi nama file jika cover tersedia di img.
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-sm border" data-bs-dismiss="modal">
+                        Batal
+                    </button>
+
+                    <button type="submit" class="btn btn-success btn-sm">
+                        <i class="bi bi-check-lg me-1"></i>
+                        Simpan Buku
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

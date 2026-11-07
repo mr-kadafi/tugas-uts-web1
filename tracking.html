@@ -1,0 +1,197 @@
+<!-- HALAMAN INFORMASI PENGIRIMAN / TRACKING -->
+
+<div class="page-heading">
+    <h4>Informasi Pengiriman</h4>
+    <p>Lacak status pengiriman pesanan dan lihat detail perjalanan paket.</p>
+</div>
+
+<!-- FORM PENCARIAN DELIVERY ORDER -->
+<div class="content-card mb-3">
+
+    <div class="content-card-header">
+        <h6>
+            <i class="bi bi-truck me-2 text-success"></i>
+            Lacak Pengiriman
+        </h6>
+    </div>
+
+    <div class="content-card-body">
+
+        <form id="formTracking">
+
+            <div class="tracking-search-row">
+                <div class="tracking-search-field">
+                    <label for="nomorDO" class="form-label">
+                        Nomor Delivery Order
+                    </label>
+
+                    <input type="text" class="form-control" id="nomorDO" placeholder="Masukkan nomor Delivery Order..."
+                        autocomplete="off" required>
+                    <small class="text-muted">
+                        Masukkan nomor DO untuk melihat informasi pengiriman.
+                    </small>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-cari-tracking">
+                    <i class="bi bi-search me-1"></i>
+                    Cari Pengiriman
+                </button>
+            </div>
+
+        </form>
+
+        <div id="pesanTracking" class="mt-3"></div>
+
+    </div>
+</div>
+
+
+<!-- HASIL PENCARIAN PENGIRIMAN -->
+<div id="hasilTracking" style="display: none;">
+
+    <!-- INFORMASI PEMESAN DAN STATUS -->
+    <div class="content-card mb-3">
+
+        <div class="content-card-header">
+            <h6>
+                <i class="bi bi-box-seam me-2 text-success"></i>
+                Detail Pengiriman
+            </h6>
+
+            <span id="badgeStatusTracking" class="badge">
+                Status
+            </span>
+        </div>
+
+        <div class="content-card-body">
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <div class="tracking-info-item">
+                        <span>Nomor Delivery Order</span>
+                        <h6 id="hasilNomorDO">-</h6>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="tracking-info-item">
+                        <span>Nama Pemesan</span>
+                        <h6 id="hasilNamaPemesan">-</h6>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- PROGRESS PENGIRIMAN -->
+            <div class="tracking-progress-section">
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="tracking-section-title mb-0">
+                        Status Pengiriman
+                    </h6>
+
+                    <span id="persentaseTracking" class="text-success fw-semibold small">
+                        0%
+                    </span>
+                </div>
+
+                <div class="progress tracking-progress">
+                    <div id="progressBarTracking" class="progress-bar bg-success" role="progressbar" style="width: 0%"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="tracking-progress-labels">
+                    <span>
+                        <i class="bi bi-box-seam"></i>
+                        Diproses
+                    </span>
+
+                    <span>
+                        <i class="bi bi-truck"></i>
+                        Dalam Perjalanan
+                    </span>
+
+                    <span>
+                        <i class="bi bi-house-check"></i>
+                        Diterima
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- INFORMASI EKSPEDISI -->
+    <div class="content-card mb-3">
+
+        <div class="content-card-header">
+            <h6>
+                <i class="bi bi-info-circle me-2 text-success"></i>
+                Informasi Paket
+            </h6>
+        </div>
+
+        <div class="content-card-body">
+
+            <div class="row g-3">
+
+                <div class="col-md-4 col-6">
+                    <div class="tracking-info-item">
+                        <span>Ekspedisi</span>
+                        <h6 id="hasilEkspedisi">-</h6>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-6">
+                    <div class="tracking-info-item">
+                        <span>Tanggal Kirim</span>
+                        <h6 id="hasilTanggalKirim">-</h6>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-6">
+                    <div class="tracking-info-item">
+                        <span>Jenis Paket</span>
+                        <h6 id="hasilJenisPaket">-</h6>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-6">
+                    <div class="tracking-info-item">
+                        <span>Total Pembayaran</span>
+                        <h6 id="hasilTotalPembayaran" class="text-success">-</h6>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- RIWAYAT PERJALANAN -->
+    <div class="content-card">
+
+        <div class="content-card-header">
+            <h6>
+                <i class="bi bi-clock-history me-2 text-success"></i>
+                Riwayat Perjalanan Paket
+            </h6>
+        </div>
+
+        <div class="content-card-body">
+
+            <div id="riwayatTracking" class="tracking-timeline">
+                <!-- Riwayat ditampilkan melalui JavaScript -->
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

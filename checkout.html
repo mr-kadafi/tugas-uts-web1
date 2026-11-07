@@ -1,0 +1,318 @@
+<!-- HALAMAN PEMESANAN / CHECKOUT -->
+
+<div class="page-heading">
+    <h4>Halaman Pemesanan</h4>
+    <p>Kelola data pemesanan buku, informasi pemesan, dan pembayaran.</p>
+</div>
+
+<!-- RINGKASAN PEMESANAN -->
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-info">
+                <span>Total Pemesanan</span>
+                <h3 id="totalPemesanan">0</h3>
+            </div>
+            <div class="stat-icon green">
+                <i class="bi bi-cart-check"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-info">
+                <span>Menunggu Pembayaran</span>
+                <h3 id="menungguPembayaran">0</h3>
+            </div>
+            <div class="stat-icon yellow">
+                <i class="bi bi-clock-history"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-info">
+                <span>Pemesanan Lunas</span>
+                <h3 id="pemesananLunas">0</h3>
+            </div>
+            <div class="stat-icon green">
+                <i class="bi bi-wallet2"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- DAFTAR PEMESANAN -->
+<div class="content-card">
+
+    <div class="content-card-header">
+        <div>
+            <h6>
+                <i class="bi bi-receipt me-2 text-success"></i>
+                Daftar Pemesanan
+            </h6>
+        </div>
+
+        <button type="button" class="btn btn-success btn-sm" id="btnTambahPemesanan">
+            <i class="bi bi-plus-lg me-1"></i>
+            Tambah Pemesanan
+        </button>
+    </div>
+
+    <div class="content-card-body">
+
+        <div class="row mb-3">
+            <div class="col-md-5">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-search"></i>
+                    </span>
+
+                    <input type="text" class="form-control" id="searchPemesanan"
+                        placeholder="Cari nomor pesanan atau nama pemesan...">
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-dashboard table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nomor Pesanan</th>
+                        <th>Nama Pemesan</th>
+                        <th>Buku</th>
+                        <th>Jumlah</th>
+                        <th>Total Pembayaran</th>
+                        <th>Metode Pembayaran</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelPemesanan">
+                    <!-- Data ditampilkan melalui JavaScript -->
+                </tbody>
+
+            </table>
+        </div>
+
+        <div id="jumlahDataPemesanan" class="text-muted small mt-3">
+            Menampilkan 0 data pemesanan.
+        </div>
+
+    </div>
+</div>
+
+
+<!-- MODAL TAMBAH / UBAH PEMESANAN -->
+<div class="modal fade" id="modalPemesanan" tabindex="-1" aria-labelledby="judulModalPemesanan" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+
+        <div class="modal-content">
+
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
+
+                <h5 class="modal-title fs-6 fw-semibold" id="judulModalPemesanan">
+                    <i class="bi bi-cart-plus text-success me-2"></i>
+                    Tambah Pemesanan
+                </h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+
+            </div>
+
+
+            <!-- FORM PEMESANAN -->
+            <form id="formPemesanan">
+
+                <!-- MODAL BODY -->
+                <div class="modal-body">
+
+                    <input type="hidden" id="idPemesanan">
+
+
+                    <!-- INFORMASI PEMESAN -->
+                    <div class="form-section">
+
+                        <h6 class="form-section-title">
+                            <i class="bi bi-person me-2"></i>
+                            Informasi Pemesan
+                        </h6>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="namaPemesan" class="form-label">
+                                    Nama Pemesan
+                                </label>
+
+                                <input type="text" class="form-control" id="namaPemesan"
+                                    placeholder="Masukkan nama lengkap" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="emailPemesan" class="form-label">
+                                    Email
+                                </label>
+
+                                <input type="email" class="form-control" id="emailPemesan"
+                                    placeholder="contoh@email.com" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="teleponPemesan" class="form-label">
+                                    Nomor Telepon
+                                </label>
+
+                                <input type="tel" class="form-control" id="teleponPemesan"
+                                    placeholder="Contoh: 081234567890" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="alamatPemesan" class="form-label">
+                                    Alamat Pengiriman
+                                </label>
+
+                                <input type="text" class="form-control" id="alamatPemesan"
+                                    placeholder="Masukkan alamat pengiriman" required>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <!-- INFORMASI PESANAN -->
+                    <div class="form-section">
+
+                        <h6 class="form-section-title">
+                            <i class="bi bi-book me-2"></i>
+                            Informasi Pesanan
+                        </h6>
+
+                        <div class="row">
+
+                            <div class="col-md-7 mb-3">
+                                <label for="bukuPesanan" class="form-label">
+                                    Pilih Buku
+                                </label>
+
+                                <select class="form-select" id="bukuPesanan" required>
+                                    <option value="">-- Pilih Buku --</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-5 mb-3">
+                                <label for="jumlahPesanan" class="form-label">
+                                    Jumlah Pesanan
+                                </label>
+
+                                <input type="number" class="form-control" id="jumlahPesanan" min="1" value="1" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="hargaSatuan" class="form-label">
+                                    Harga Satuan
+                                </label>
+
+                                <input type="text" class="form-control bg-light" id="hargaSatuan" readonly
+                                    placeholder="Otomatis">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="totalPembayaran" class="form-label">
+                                    Total Pembayaran
+                                </label>
+
+                                <input type="text" class="form-control bg-light fw-semibold" id="totalPembayaran"
+                                    readonly placeholder="Otomatis">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <!-- INFORMASI PEMBAYARAN -->
+                    <div class="form-section">
+
+                        <h6 class="form-section-title">
+                            <i class="bi bi-wallet2 me-2"></i>
+                            Informasi Pembayaran
+                        </h6>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="metodePembayaran" class="form-label">
+                                    Metode Pembayaran
+                                </label>
+
+                                <select class="form-select" id="metodePembayaran" required>
+                                    <option value="">-- Pilih Metode --</option>
+                                    <option value="Transfer Bank">Transfer Bank</option>
+                                    <option value="E-Wallet">E-Wallet</option>
+                                    <option value="COD">Cash on Delivery (COD)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="statusPembayaran" class="form-label">
+                                    Status Pembayaran
+                                </label>
+
+                                <select class="form-select" id="statusPembayaran" required>
+                                    <option value="Menunggu Pembayaran">
+                                        Menunggu Pembayaran
+                                    </option>
+
+                                    <option value="Lunas">
+                                        Lunas
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- AKHIR MODAL BODY -->
+
+
+                <!-- MODAL FOOTER -->
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-light btn-sm border" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg me-1"></i>
+                        Batal
+                    </button>
+
+                    <button type="submit" class="btn btn-success btn-sm" id="btnSimpanPemesanan">
+                        <i class="bi bi-check-lg me-1"></i>
+                        Simpan Pemesanan
+                    </button>
+
+                </div>
+                <!-- AKHIR MODAL FOOTER -->
+
+            </form>
+            <!-- AKHIR FORM -->
+
+        </div>
+
+    </div>
+</div>
