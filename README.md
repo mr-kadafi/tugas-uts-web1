@@ -11,7 +11,7 @@
 - **Hari/Tanggal:** Sabtu, 7 November 2026
 - **Pertemuan:** 8 (Offline)
 
-# BUKU.KU – Bookstore Management System
+# Bookstore Management System
 
 BUKU.KU merupakan aplikasi web sederhana untuk pemesanan dan pengelolaan buku pada sebuah toko online. Aplikasi ini dikembangkan menggunakan HTML, CSS, dan JavaScript dengan tampilan yang responsif serta navigasi antarmenu yang dinamis tanpa perlu memuat ulang seluruh halaman.
 
